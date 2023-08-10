@@ -1,0 +1,32 @@
+<%-include('partials/header');-%>
+<h1>Compose</h1>
+<form action="/" method="post">
+    <div class="tittle">
+        <h3>Title</h3>
+        <input class="box form-control" id="title" type="text" name="title" placeholder="enter your title">
+    </div>
+    <div class="content">
+        <h3>Post</h3>
+        <textarea class="box form-control" id="content" type="text" name="content" placeholder="enter your content"></textarea>
+    </div>
+    <button disabled class="btn btn-primary" type="submit">Post</button>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).keyup(function(){
+        $('#title,#content').on('input', function() {
+            var textBoxText = $('#title').val();
+            var inputText = $('#content').val();
+            console.log(textBoxText, inputText)
+        if (inputText.length > 0 && textBoxText.length > 0) {
+          $('.btn').prop('disabled', false);
+        } else {
+          $('.btn').prop('disabled', true);
+        }
+       
+        
+});
+    })
+        
+</script>
+<%-include('partials/footer');-%>
