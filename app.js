@@ -46,6 +46,17 @@ app.post("/",function(req,res){
    Blog.insertMany([{title:post.title,body:post.post,url:post.url}])
     res.redirect("/")
 })
+app.post("/delete",function(req,res){
+    item_id=req.body.post
+    // item_id="ObjectId("+item_id+")"
+    console.log({_id:item_id})
+    Blog.deleteOne({ _id: item_id  }).then(function(){
+        console.log("Data deleted"); // Success
+    }).catch(function(error){
+        console.log(error); // Failure
+    });
+    res.redirect("/")
+})
 app.get('/posts/:topic',function(req,res){
     try{
     path= _.kebabCase(req.params.topic)}
