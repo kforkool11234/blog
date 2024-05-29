@@ -16,7 +16,7 @@ posts=[]
 let path=''
 //Mongoose//
 const mongoose= require("mongoose")
-mongoose.connect("mongodb://0.0.0.0:27017/blog",{ useNewUrlParser: true } ).then(()=> console.log("succesfully connected"));
+mongoose.connect(process.env.mongo_url,{ useNewUrlParser: true } ).then(()=> console.log("succesfully connected"));
 const BlogSchema= new mongoose.Schema({title:String,body:String,url:String})
 const Blog=mongoose.model("Blog",BlogSchema)
 //logic//
